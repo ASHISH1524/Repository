@@ -1,0 +1,155 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+void fvector(vector<int>&);
+void printvector( vector<int>&);
+void insertelement(vector<int>&);
+void deletevector(vector<int>&);
+void reversevector(vector<int>&);
+void printevenvector(vector<int>&);
+void replacevector(vector<int>&);
+int main()
+{
+    vector<int>h1;
+    int choice;
+    fvector(h1);
+    printvector(h1);
+    cout<<"Enter Key For performing Operation : "<<endl;
+    cout<<"1- Inserting a element"<<endl;
+    cout<<"2-Deleting a element"<<endl;
+    cout<<"3-Reversing the vector"<<endl;
+    cout<<"4-Replacing elements in vector"<<endl;
+    cout<<"5- Printing Odd Numbers in Vector"<<endl;
+    cin>>choice;
+    switch(choice)
+    {
+
+    case 1:
+        {
+            insertelement(h1);
+            break;
+        }
+    case 2:
+        {
+            deletevector(h1);
+            break;
+        }
+    case 3:
+        {
+            reversevector(h1);
+            break;
+        }
+    case 4:
+        {
+            replacevector(h1);
+            break;
+        }
+    case 5:
+        {
+            printevenvector(h1);
+            break;
+        }
+    default:
+        {
+
+        }
+    }
+return 0;
+}
+void fvector(vector<int>& h)
+{
+    int input;
+    cout<<"enter the numbers and enter -1 to exit : ";
+    cin>>input;
+    while(input != -1)
+    {
+        h.push_back(input);
+        cin>>input;
+    }
+    cout<<endl;
+
+}
+void printvector( vector<int>& h2)
+{
+
+    cout<<"Vector :";
+    for( int i=0;i<h2.size();i++)
+    {
+
+        cout<< h2[i]<<" ";
+    }
+}
+void insertelement(vector<int>& h)
+{
+    int n,x;
+    cout<<endl<<"enter the index where element should enter : ";
+    cin>>n;
+    cout<<endl<<"enter the number : ";
+    cin>>x;
+    h.insert(h.begin()+n,x);
+    cout<<endl<<" New Vector :";
+    for( int i=0;i<h.size();i++)
+    {
+
+        cout<< h[i]<<" ";
+    }
+}
+void deletevector(vector<int>& h)
+{
+    int y;
+    cout<<endl<<"enter the index of the element to be deleted : ";
+    cin>>y;
+    h.erase(h.begin()+y);
+    cout<<endl<<"New Vector :";
+    for( int i=0;i<h.size();i++)
+    {
+
+        cout<< h[i]<<" ";
+    }
+}
+void reversevector(vector<int>& h)
+{
+
+    cout<<endl<<" reverse vector : ";
+    for(unsigned int i=h.size();i>0;i--)
+    {
+
+        cout<<h[i-1]<<" ";
+    }
+}
+void printevenvector(vector<int>& h)
+{
+
+    for(unsigned int i=0;i<h.size();i++)
+    {
+        if(h[i]%2==0)
+        {
+            cout<<endl<<h[i]<<" : is even"<<endl;
+        }
+        else
+        {
+            cout<<h[i]<<" :not even"<<endl;
+        }
+    }
+}
+void replacevector(vector<int>& h)
+{
+
+    int o,n;
+    cout<<endl<<"enter the number to be replaced : ";
+    cin>>o;
+    cout<<endl<<"enter the new number : ";
+    cin>>n;
+    cout<<endl<<"New vectors : ";
+    for(unsigned int i=0;i<h.size();i++)
+    {
+
+        if(h[i]==o)
+        {
+            h.erase(h.begin()+i);
+            h.insert(h.begin()+i,n);
+        }
+        cout<<endl<<h[i]<<" ";
+    }
+
+}
