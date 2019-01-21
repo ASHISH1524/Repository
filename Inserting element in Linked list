@@ -1,0 +1,96 @@
+#include<iostream>
+using namespace std;
+struct node
+{
+    int data;
+    node *next;
+}*save;
+class linked_list
+{
+public:
+    node *head,*tail;
+    linked_list()
+    {
+
+        head=NULL;
+        tail=NULL;
+    }
+    void addbeg(int i)
+    {
+        node *tmp=new node;
+        tmp->data=i;
+        tmp->next=NULL;
+        if(head==NULL)
+        {
+            head=tmp;
+            tail=tmp;
+        }
+        else
+        {
+         save=head;
+         head=tmp;
+         tmp->next=save;
+        }
+    }
+    void addend(int i)
+    {
+        node *tmp=new node;
+        tmp->data=i;
+        tmp->next=NULL;
+        if(head==NULL)
+        {
+            head=tmp;
+            tail=tmp;
+        }
+        else
+        {
+            tail->next=tmp;
+            tail=tail->next;
+        }
+    }
+    void display()
+    {
+        node *tmp;
+        tmp=head;
+        while(head!=NULL)
+        {
+            cout<<tmp->data<<"->";
+            tmp=tmp->next;
+        }
+    }
+};
+int main()
+{
+    int i;
+    int n;
+    linked_list a;
+    cout<<"1- Enter from Begining"<<endl;
+    cout<<"2- Enter from End"<<endl;
+    cin>>n;
+    if(n==1)
+    {
+        char ch='y';
+        while(ch=='y'||ch=='Y')
+        {
+            cout<<"enter the element"<<endl;
+            cin>>i;
+            a.addbeg(i);
+            cout<<"press (y/Y) to continue and(n/N) to stop"<<endl;
+            cin>>ch;
+        }
+    }
+    else
+    {
+        char ch='y';
+        while(ch=='y'||ch=='Y')
+        {
+            cout<<"enter the element"<<endl;
+            cin>>i;
+            a.addend(i);
+            cout<<"press (y/Y) to continue and(n/N) to stop"<<endl;
+            cin>>ch;
+        }
+    }
+    a.display();
+    return 0;
+}
