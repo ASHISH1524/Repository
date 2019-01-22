@@ -1,0 +1,85 @@
+#include<iostream>
+using namespace std;
+struct node
+{
+    int data;
+    node *next;
+}*save,*ptr;
+class linked_list
+{
+
+public:
+    node *head,*tail;
+    linked_list()
+    {
+
+        head=NULL;
+        tail=NULL;
+    }
+    void addnode(int i)
+    {
+
+        node *tmp=new node;
+        tmp->data=i;
+        tmp->next=NULL;
+        if(head==NULL)
+        {
+
+            head=tmp;
+            tail=tmp;
+        }
+        else
+        {
+            save=head;
+            head=tmp;
+            tmp->next=save;
+        }
+    }
+    void display()
+    {
+        node *tmp;
+        tmp=head;
+        while(tmp!=NULL)
+        {
+            cout<<tmp->data<<"->";
+            tmp=tmp->next;
+        }
+    }
+    void deletenode()
+    {
+        if(head==NULL)
+        {
+            cout<<"No node to delete"<<endl;
+        }
+        else
+        {
+            ptr=head;
+            head=head->next;
+            delete ptr;
+        }
+    }
+};
+int main()
+{
+    int i;
+    linked_list a;
+    char ch='y';
+    while(ch=='y'|| ch=='Y')
+    {
+        cout<<"Enter the number to insert in Linked List"<<endl;
+        cin>>i;
+        a.addnode(i);
+        cout<<"Enter (y/Y) to continue or (n/N) to stop"<<endl;
+        cin>>ch;
+    }
+    a.display();
+    char dl='d';
+    cout<<endl<<"Enter (d/D) to delete node from begining"<<endl;
+    cin>>dl;
+    if(dl=='d'|| dl=='D')
+    {
+        a.deletenode();
+    }
+    a.display();
+    return 0;
+}
