@@ -1,0 +1,78 @@
+#include<iostream>
+#include<algorithm>
+#include<stdlib.h>
+using namespace std;
+class stacks
+{
+    int arr[5];
+    int top;
+public:
+
+    stacks()
+    {
+        top=-1;
+    }
+    void push(int x)
+    {
+        if(top>4)
+        {
+            cout<<"Overflow Condition :"<<endl;
+            return;
+        }
+        arr[++top]=x;
+    }
+    void pop()
+    {
+        if(top<0)
+        {
+            cout<<"Underflow Condition :"<<endl;
+            return;
+        }
+        arr[top--];
+    }
+    void display()
+    {
+
+        for(int i=top;i>=0;i--)
+        {
+            cout<<arr[i]<<endl;
+        }
+    }
+};
+int main()
+{
+    int ch;
+    int item;
+    stacks s;
+    while(1)
+    {
+    cout<<endl<<"1- push      2- pop      3- display       4- exit"<<endl;
+    cin>>ch;
+    switch(ch)
+    {
+    case 1:
+        {
+            cout<<endl<<"Enter the elements :";
+            cin>>item;
+            s.push(item);
+            break;
+        }
+    case 2:
+        {
+            s.pop();
+            break;
+        }
+    case 3:
+        {
+            cout<<endl;
+            s.display();
+            break;
+        }
+    case 4:
+        {
+            exit(0);
+        }
+    }
+    }
+    return 0;
+}
