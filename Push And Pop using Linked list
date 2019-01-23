@@ -1,0 +1,95 @@
+#include<stdlib.h>
+#include<algorithm>
+#include<iostream>
+using namespace std;
+struct node
+{
+    int data;
+    node *next;
+}*save,*ptr;
+class stacks
+{
+public:
+    node *head,*tail;
+    stacks()
+    {
+        head=NULL;
+        tail=NULL;
+    }
+    void push(int i)
+    {
+        node *tmp=new node;
+        tmp->data=i;
+        tmp->next=NULL;
+        if(head==NULL)
+        {
+            head=tmp;
+            tail=tmp;
+        }
+        else
+        {
+            save=head;
+            head=tmp;
+            tmp->next=save;
+        }
+    }
+    void pop()
+    {
+        if(head==NULL)
+        {
+            cout<<"Underflow Condition"<<endl;
+        }
+        else
+        {
+            ptr=head;
+            head=head->next;
+            delete ptr;
+        }
+    }
+    void display()
+    {
+        node *tmp;
+        tmp=head;
+        while(tmp!=NULL)
+        {
+            cout<<tmp->data<<"-";
+            tmp=tmp->next;
+        }
+    }
+};
+int main()
+{
+    int ch;
+    int item;
+    stacks s;
+    while(1)
+    {
+    cout<<endl<<"1-Push    2-pop      3-display       4-exit"<<endl;
+    cin>>ch;
+    switch(ch)
+    {
+    case 1:
+        {
+            cout<<"Enter element :";
+            cin>>item;
+            s.push(item);
+            break;
+        }
+    case 2:
+        {
+            s.pop();
+            cout<<"Element is Poped"<<endl;
+            break;
+        }
+    case 3:
+        {
+            s.display();
+            break;
+        }
+    case 4:
+        {
+            exit(0);
+        }
+    }
+    }
+}
