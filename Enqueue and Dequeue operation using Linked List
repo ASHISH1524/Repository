@@ -1,0 +1,98 @@
+#include<iostream>
+#include<algorithm>
+#include<stdlib.h>
+using namespace std;
+struct node
+{
+    int data;
+    node *next;
+}*ptr;
+class queues
+{
+public:
+    node *head,*tail;
+    queues()
+    {
+        head=NULL;
+        tail=NULL;
+    }
+    void enqueue(int i)
+    {
+
+        node *tmp=new node();
+        tmp->data=i;
+        tmp->next=NULL;
+        if(head==NULL)
+        {
+            head=tmp;
+            tail=tmp;
+        }
+        else
+        {
+            tail->next=tmp;
+            tail=tail->next;
+        }
+    }
+    void dequeue()
+    {
+        if(head==NULL)
+        {
+            cout<<"UNDER FLOW CONDITION"<<endl;
+        }
+        else
+        {
+            ptr=head;
+            head=head->next;
+            delete ptr;
+        }
+    }
+    void display()
+    {
+        node *tmp;
+        tmp=head;
+        while(tmp!=NULL)
+        {
+            cout<<tmp->data<<" ";
+            tmp=tmp->next;
+        }
+    }
+};
+int main()
+{
+    int i,item;
+    queues ob;
+    while(1)
+    {
+        cout<<endl<<"1-Insert Item : "<<endl;
+        cout<<"2-Delete Item : "<<endl;
+        cout<<"3-Display Item : "<<endl;
+        cout<<"4-Exit"<<endl;
+        cin>>i;
+        switch(i)
+        {
+            case 1:
+                {
+                    cout<<endl<<"Enter item : ";
+                    cin>>item;
+                    ob.enqueue(item);
+                    break;
+                }
+            case 2:
+                {
+                    ob.dequeue();
+                    break;
+                }
+            case 3:
+                {
+                    ob.display();
+                    break;
+                }
+            case 4:
+                {
+                    exit(0);
+                }
+            }
+
+    }
+    return 0;
+}
